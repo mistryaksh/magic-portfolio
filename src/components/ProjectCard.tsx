@@ -43,21 +43,30 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   };
 
   return (
-    <Flex fillWidth gap="m" direction="column">
+    <Flex fillWidth direction="column">
       <Flex
         mobileDirection="column"
         fillWidth
-        paddingX="l"
         paddingTop="xs"
+        alignItems="flex-end"
         paddingBottom="m"
         gap="l"
       >
         {title && (
           <Flex flex={5} direction="column">
-            <Heading as="h2" wrap="balance" variant="display-strong-xs">
+            <Heading as="h5" wrap="balance" variant="heading-strong-s">
               {title}
             </Heading>
-            <Link href={href}>Show Website</Link>
+            <Link
+              style={{
+                color: "gray",
+                textDecoration: "underline",
+                marginTop: 5,
+              }}
+              href={href}
+            >
+              Show Website
+            </Link>
           </Flex>
         )}
         {(description?.trim() || content?.trim()) && (

@@ -7,6 +7,7 @@ import {
   Button,
   Avatar,
   RevealFx,
+  SmartImage,
 } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 
@@ -15,6 +16,7 @@ import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
+import Work from "./work/page";
 
 export async function generateMetadata({
   params: { locale },
@@ -121,15 +123,101 @@ export default function Home({
           </RevealFx>
         </Flex>
       </Flex>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} locale={locale} />
-      </RevealFx>
-      {routes["/blog"] && (
-        <Flex fillWidth paddingX="20">
-          <Posts range={[1, 2]} columns="2" locale={locale} />
-        </Flex>
-      )}
+
+      <Heading
+        as="h2"
+        id={about.work.title}
+        variant="display-strong-s"
+        marginBottom="m"
+        align="left"
+        style={{ width: "100%" }}
+      >
+        Freelance Experience
+      </Heading>
       <Projects range={[2]} locale={locale} />
+
+      {about.work.display && (
+        <>
+          <Heading
+            as="h2"
+            id={about.work.title}
+            variant="display-strong-s"
+            marginBottom="m"
+            align="left"
+            style={{ width: "100%" }}
+          >
+            {about.work.title}
+          </Heading>
+          <Flex direction="column" fillWidth gap="l" marginBottom="40">
+            {about.work.experiences.map((experience, index) => (
+              <Flex
+                key={`${experience.company}-${experience.role}-${index}`}
+                fillWidth
+                direction="column"
+              >
+                <Flex
+                  fillWidth
+                  justifyContent="space-between"
+                  alignItems="flex-end"
+                  marginBottom="4"
+                >
+                  <Text id={experience.company} variant="heading-strong-l">
+                    {experience.company}
+                  </Text>
+                  <Text
+                    variant="heading-default-xs"
+                    onBackground="neutral-weak"
+                  >
+                    {experience.timeframe}
+                  </Text>
+                </Flex>
+                <Text
+                  variant="body-default-s"
+                  onBackground="brand-weak"
+                  marginBottom="m"
+                >
+                  {experience.role}
+                </Text>
+                <Flex as="ul" direction="column" gap="16">
+                  {experience.achievements.map(
+                    (achievement: string, index: any) => (
+                      <Text
+                        as="li"
+                        variant="body-default-m"
+                        key={`${experience.company}-${index}`}
+                      >
+                        {achievement}
+                      </Text>
+                    )
+                  )}
+                </Flex>
+                {experience.images.length > 0 && (
+                  <Flex fillWidth paddingTop="m" paddingLeft="40" wrap>
+                    {experience.images.map((image, index) => (
+                      <Flex
+                        key={index}
+                        border="neutral-medium"
+                        borderStyle="solid-1"
+                        radius="m"
+                        minWidth={image.width}
+                        height={image.height}
+                      >
+                        <SmartImage
+                          enlarge
+                          radius="m"
+                          sizes={image.width.toString()}
+                          alt={image.alt}
+                          src={image.src}
+                        />
+                      </Flex>
+                    ))}
+                  </Flex>
+                )}
+              </Flex>
+            ))}
+          </Flex>
+        </>
+      )}
     </Flex>
   );
 }
