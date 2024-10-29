@@ -128,13 +128,12 @@ export default function Home({
         as="h2"
         id={about.work.title}
         variant="display-strong-s"
-        marginBottom="m"
         align="left"
         style={{ width: "100%" }}
       >
         Freelance Experience
       </Heading>
-      <Projects range={[2]} locale={locale} />
+      <Projects range={[1]} locale={locale} />
 
       {about.work.display && (
         <>
@@ -142,7 +141,6 @@ export default function Home({
             as="h2"
             id={about.work.title}
             variant="display-strong-s"
-            marginBottom="m"
             align="left"
             style={{ width: "100%" }}
           >

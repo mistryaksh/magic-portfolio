@@ -52,7 +52,7 @@ export function Projects({ range, locale }: ProjectsProps) {
   ];
 
   return (
-    <Flex fillWidth gap="l" marginBottom="40" paddingX="l" direction="column">
+    <Flex fillWidth gap="l" marginBottom="20" direction="column">
       {allProjects.map(({ ...props }, i) => (
         <ProjectCard {...props} key={i} />
       ))}

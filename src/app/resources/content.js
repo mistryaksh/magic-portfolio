@@ -66,9 +66,15 @@ const home = {
   headline: <>Full Stack Software Developer</>,
   subline: (
     <>
+      Since beginning my journey as a freelancer software developer over 4 years
+      ago, I've done remote work for agencies, consulted for startups, and
+      collaborated with talented people to create digital products for both
+      business and consumer use. I'm quietly confident, naturally curious, and
+      perpetually working on improving my chops one design problem at a time.
       I'm Aksh, a Full Stack Software Developer as{" "}
-      <InlineCode>Freelancer</InlineCode>, where I Develope intuitive
-      <br /> user experiences
+      <InlineCode>Freelancer</InlineCode> &{" "}
+      <InlineCode>Team Persona</InlineCode>, where I Develope intuitive user
+      experiences
     </>
   ),
 };

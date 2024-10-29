@@ -49,11 +49,17 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         fillWidth
         paddingTop="xs"
         alignItems="flex-end"
-        paddingBottom="m"
-        gap="l"
+        paddingBottom="l"
+        marginBottom="20"
+        gap="xl"
       >
         {title && (
-          <Flex flex={5} direction="column">
+          <Flex
+            flex={1}
+            direction="column"
+            justifyContent="flex-start"
+            style={{ width: "100%" }}
+          >
             <Heading as="h5" wrap="balance" variant="heading-strong-s">
               {title}
             </Heading>
@@ -62,6 +68,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 color: "gray",
                 textDecoration: "underline",
                 marginTop: 5,
+                textAlign: "right",
               }}
               href={href}
             >
@@ -70,7 +77,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </Flex>
         )}
         {(description?.trim() || content?.trim()) && (
-          <Flex flex={7} direction="column" gap="s">
+          <Flex
+            flex={1}
+            direction="column"
+            gap="s"
+            style={{
+              width: "100%",
+              textAlign: "left",
+            }}
+          >
             {description?.trim() && (
               <Text
                 wrap="balance"
